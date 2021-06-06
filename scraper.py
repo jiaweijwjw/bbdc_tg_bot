@@ -1,8 +1,9 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from tg import TelegramChatbot
-from constants import LOGIN_URL, LOGIN_TITLE, PATH_TO_CHROMEDRIVER
+from constants import LOGIN_URL, LOGIN_TITLE
 from helpers import (
     login,
     wait_for_element,
@@ -35,10 +36,14 @@ msg = "BBDC: \n\n"
 current_booking = {}
 
 options = webdriver.ChromeOptions()
+options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 options.add_argument("--ignore-certificate-errors")
 options.add_argument("--incognito")
 options.add_argument("--headless")
-browser = webdriver.Chrome(PATH_TO_CHROMEDRIVER, options=options)
+options.add_argument("--no-sandbox")
+browser = webdriver.Chrome(
+    executable_path=os.environ.get("PATH_TO_CHROMEDRIVER"), options=options
+)
 
 try:
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.

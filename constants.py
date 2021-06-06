@@ -5,7 +5,7 @@ LOGIN_POST_REQ_URL = "http://www.bbdc.sg/bbdc/bbdc_web/header2.asp"
 LOGIN_URL = "http://www.bbdc.sg/bbdc/bbdc_web/newheader.asp"
 LOGIN_TITLE = "Bukit Batok Driving Centre"
 SELECT_COURSE_TITLE = "BBDC: Select Course"
-PATH_TO_CHROMEDRIVER = "/opt/WebDriver/bin/chromedriver"
+# PATH_TO_CHROMEDRIVER = "/opt/WebDriver/bin/chromedriver" #use env
 
 # unused
 # class PracticalSession(Enum):
