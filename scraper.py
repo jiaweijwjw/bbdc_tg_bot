@@ -1,5 +1,6 @@
 import os
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from tg import TelegramChatbot
@@ -43,8 +44,11 @@ options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("disable-dev-shm-usage")
 browser = webdriver.Chrome(
-    executable_path=os.environ.get("PATH_TO_CHROMEDRIVER"), options=options
+    executable_path=ChromeDriverManager().install(), options=options
 )
+# browser = webdriver.Chrome(
+#     executable_path=os.environ.get("PATH_TO_CHROMEDRIVER"), options=options
+# )
 
 try:
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
