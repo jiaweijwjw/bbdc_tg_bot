@@ -58,7 +58,10 @@ browser = webdriver.Chrome(
 
 
 try:
+    # browser.get("https://www.instagram.com/accounts/login/")
+
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
+    wait_for_element(browser, "form[action='header2.asp']")
     print(browser.current_url)
     print(LOGIN_URL)
     print(browser.title)
