@@ -1,5 +1,7 @@
 import os
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
@@ -42,7 +44,7 @@ options.add_argument("--ignore-certificate-errors")
 options.add_argument("--allow-running-insecure-content")
 options.add_argument("--ignore-ssl-errors=yes")
 options.add_argument("--incognito")
-options.add_argument("--headless")
+# options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("disable-dev-shm-usage")
 # options.add_argument("window-size=1920x1080")
@@ -61,7 +63,9 @@ try:
         print(browser.title)
         login(browser)
         # wait_for_element(browser, "body.insecure-form")
-        wait_for_element(browser, "proceed-button")
+        WebDriverWait(browser, timeout=3).until(
+            EC.presence_of_element_located((By.ID, "proceed-button"))
+        )
         browser.find_element_by_id("proceed-button").click()
         wait_for_element(browser, SELECT_COURSE_FORM)
         print(browser.title)
