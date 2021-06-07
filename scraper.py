@@ -42,7 +42,7 @@ options.add_argument("--ignore-certificate-errors")
 options.add_argument("--allow-running-insecure-content")
 options.add_argument("--ignore-ssl-errors=yes")
 options.add_argument("--incognito")
-options.add_argument("--headless")
+# options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("disable-dev-shm-usage")
 # options.add_argument("window-size=1920x1080")
@@ -55,16 +55,13 @@ browser = webdriver.Chrome(
 # )
 
 
-with webdriver.Chrome(ChromeDriverManager().install(), options=options) as browser:
+try:
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
-    # browser.get(
-    #     "https://stackoverflow.com/questions/67787707/how-can-i-make-my-python-selenium-project-work-on-heroku"
-    # )
-    print(browser.title)
-    print(browser.current_url)
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
         print(browser.title)
         login(browser)
+        wait_for_element(browser, "body.insecure-form")
+        browser.find_element_by_id("proceed-button").click()
         wait_for_element(browser, SELECT_COURSE_FORM)
         print(browser.title)
         class2A_radio_btn = browser.find_element_by_css_selector(CLASS_2A_RADIO_BTN)
@@ -159,10 +156,20 @@ with webdriver.Chrome(ChromeDriverManager().install(), options=options) as brows
                 f.write(msg)
                 bot.send_practical_training_slots(msg)
         print("end")
-        bot.send_practical_training_slots("fuck")
-        browser.quit()
-# try:
+        bot.send_practical_training_slots("hi")
+except Exception as e:
+    print(e)
+# finally:
+#     browser.quit()
+
+
+# with webdriver.Chrome(ChromeDriverManager().install(), options=options) as browser:
 #     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
+#     # browser.get(
+#     #     "https://stackoverflow.com/questions/67787707/how-can-i-make-my-python-selenium-project-work-on-heroku"
+#     # )
+#     print(browser.title)
+#     print(browser.current_url)
 #     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
 #         print(browser.title)
 #         login(browser)
@@ -260,7 +267,5 @@ with webdriver.Chrome(ChromeDriverManager().install(), options=options) as brows
 #                 f.write(msg)
 #                 bot.send_practical_training_slots(msg)
 #         print("end")
-# except Exception as e:
-#     print(e)
-# finally:
-#     browser.quit()
+#         bot.send_practical_training_slots("fuck")
+#         browser.quit()

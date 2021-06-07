@@ -1,5 +1,6 @@
 import re
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from creds import USERNAME, PASSWORD
@@ -7,6 +8,12 @@ from cssselectors import USERNAME_INPUT_FIELD, PASSWORD_INPUT_FIELD, LOGIN_BTN
 
 
 def login(browser):
+    browser.find_element_by_id("txtNRIC").send_keys(USERNAME)
+    browser.find_element_by_id("txtPassword").send_keys(PASSWORD)
+    browser.find_element_by_id("txtPassword").send_keys(Keys.ENTER)
+
+
+def login2(browser):
     browser.find_element_by_css_selector(USERNAME_INPUT_FIELD).send_keys(USERNAME)
     browser.find_element_by_css_selector(PASSWORD_INPUT_FIELD).send_keys(PASSWORD)
     browser.find_element_by_css_selector(LOGIN_BTN).click()
