@@ -59,6 +59,10 @@ browser = webdriver.Chrome(
 
 try:
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
+    print(browser.current_url)
+    print(LOGIN_URL)
+    print(browser.title)
+    print(LOGIN_TITLE)
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
         print(browser.title)
         try:
