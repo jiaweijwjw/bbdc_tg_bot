@@ -39,11 +39,13 @@ current_booking = {}
 options = webdriver.ChromeOptions()
 options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 options.add_argument("--ignore-certificate-errors")
+options.add_argument("--allow-running-insecure-content")
+options.add_argument("--ignore-ssl-errors=yes")
 options.add_argument("--incognito")
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("disable-dev-shm-usage")
-options.add_argument("window-size=1920x1080")
+# options.add_argument("window-size=1920x1080")
 options.add_argument("--disable-gpu")
 browser = webdriver.Chrome(
     executable_path=ChromeDriverManager().install(), options=options
@@ -54,11 +56,12 @@ browser = webdriver.Chrome(
 
 
 with webdriver.Chrome(ChromeDriverManager().install(), options=options) as browser:
-    # browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
-    browser.get(
-        "https://stackoverflow.com/questions/67787707/how-can-i-make-my-python-selenium-project-work-on-heroku"
-    )
+    browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
+    # browser.get(
+    #     "https://stackoverflow.com/questions/67787707/how-can-i-make-my-python-selenium-project-work-on-heroku"
+    # )
     print(browser.title)
+    print(browser.current_url)
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
         print(browser.title)
         login(browser)
