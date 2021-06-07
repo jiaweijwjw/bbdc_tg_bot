@@ -44,7 +44,7 @@ options.add_argument("--ignore-certificate-errors")
 options.add_argument("--allow-running-insecure-content")
 options.add_argument("--ignore-ssl-errors=yes")
 options.add_argument("--incognito")
-options.add_argument("--headless")
+# options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("disable-dev-shm-usage")
 # options.add_argument("window-size=1920x1080")
@@ -61,12 +61,17 @@ try:
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
         print(browser.title)
-        login(browser)
+        try:
+            login(browser)
+        except Exception as e:
+            print(e)
+
+        # login(browser)
         # wait_for_element(browser, "body.insecure-form")
-        WebDriverWait(browser, timeout=3).until(
-            EC.presence_of_element_located((By.ID, "proceed-button"))
-        )
-        browser.find_element_by_id("proceed-button").click()
+        # WebDriverWait(browser, timeout=3).until(
+        #     EC.presence_of_element_located((By.ID, "proceed-button"))
+        # )
+        # browser.find_element_by_id("proceed-button").click()
         wait_for_element(browser, SELECT_COURSE_FORM)
         print(browser.title)
         class2A_radio_btn = browser.find_element_by_css_selector(CLASS_2A_RADIO_BTN)
