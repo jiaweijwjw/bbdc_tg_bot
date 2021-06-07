@@ -59,11 +59,18 @@ browser = webdriver.Chrome(
 
 try:
     # browser.get("https://www.instagram.com/accounts/login/")
+    # print(browser.current_url)
+    # print(browser.title)
+    # WebDriverWait(browser, 20).until(
+    #     EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='username']"))
+    # ).send_keys("mychillnook")
+    # print(browser.title)
 
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
-    wait_for_element(browser, "form[action='header2.asp']")
+    # wait_for_element(browser, "form[action='header2.asp']")
     print(browser.current_url)
     print(LOGIN_URL)
+    login(browser)
     print(browser.title)
     print(LOGIN_TITLE)
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:

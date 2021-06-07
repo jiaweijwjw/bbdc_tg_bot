@@ -12,10 +12,25 @@ def login2(browser):
     browser.find_element_by_id("txtPassword").send_keys(PASSWORD)
     browser.find_element_by_id("txtPassword").send_keys(Keys.ENTER)
 
+    # def login_insta(browser):
+    # browser.find_element(
+    #     By.CSS_SELECTOR, "label > span > input[name='username'][type='text']"
+    # ).send_keys("mychillnook")
+    # browser.find_element_by_css_selector(
+    #     "input[name='password'][type='password']"
+    # ).send_keys("Chillout97")
+    # browser.find_element_by_css_selector("button[type='submit']").click()
+
 
 def login(browser):
-    browser.find_element_by_css_selector(USERNAME_INPUT_FIELD).send_keys(USERNAME)
-    browser.find_element_by_css_selector(PASSWORD_INPUT_FIELD).send_keys(PASSWORD)
+    WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, USERNAME_INPUT_FIELD))
+    ).send_keys(USERNAME)
+    WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, PASSWORD_INPUT_FIELD))
+    ).send_keys(PASSWORD)
+    # browser.find_element_by_css_selector(USERNAME_INPUT_FIELD).send_keys(USERNAME)
+    # browser.find_element_by_css_selector(PASSWORD_INPUT_FIELD).send_keys(PASSWORD)
     browser.find_element_by_css_selector(LOGIN_BTN).click()
 
 
