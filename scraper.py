@@ -60,7 +60,8 @@ try:
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
         print(browser.title)
         login(browser)
-        wait_for_element(browser, "body.insecure-form")
+        # wait_for_element(browser, "body.insecure-form")
+        wait_for_element(browser, "proceed-button")
         browser.find_element_by_id("proceed-button").click()
         wait_for_element(browser, SELECT_COURSE_FORM)
         print(browser.title)
