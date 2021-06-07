@@ -54,7 +54,10 @@ browser = webdriver.Chrome(
 
 
 with webdriver.Chrome(ChromeDriverManager().install(), options=options) as browser:
-    browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
+    # browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
+    browser.get(
+        "https://stackoverflow.com/questions/67787707/how-can-i-make-my-python-selenium-project-work-on-heroku"
+    )
     print(browser.title)
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
         print(browser.title)
