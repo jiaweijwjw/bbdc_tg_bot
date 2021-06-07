@@ -70,7 +70,6 @@ try:
     # wait_for_element(browser, "form[action='header2.asp']")
     print(browser.current_url)
     print(LOGIN_URL)
-    login(browser)
     print(browser.title)
     print(LOGIN_TITLE)
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:

@@ -29,9 +29,12 @@ def login(browser):
     WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, PASSWORD_INPUT_FIELD))
     ).send_keys(PASSWORD)
+    WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, LOGIN_BTN))
+    ).send_keys(Keys.ENTER)
     # browser.find_element_by_css_selector(USERNAME_INPUT_FIELD).send_keys(USERNAME)
     # browser.find_element_by_css_selector(PASSWORD_INPUT_FIELD).send_keys(PASSWORD)
-    browser.find_element_by_css_selector(LOGIN_BTN).click()
+    # browser.find_element_by_css_selector(LOGIN_BTN).click()
 
 
 def wait_for_element(browser, selector):
