@@ -76,6 +76,8 @@ try:
         print(browser.title)
         try:
             login(browser)
+            browser.switch_to.alert.dismiss()
+            browser.switch_to.default_content()
         except Exception as e:
             print(e)
 
