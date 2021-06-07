@@ -159,8 +159,8 @@ try:
         bot.send_practical_training_slots("hi")
 except Exception as e:
     print(e)
-# finally:
-#     browser.quit()
+finally:
+    browser.quit()
 
 
 # with webdriver.Chrome(ChromeDriverManager().install(), options=options) as browser:
