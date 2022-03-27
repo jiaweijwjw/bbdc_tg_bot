@@ -1,4 +1,4 @@
-API_KEY = "1825698523:AAGftQfzMvWJ80lh_-ExIcRi3wokLOowJLM"
-CHAT_ID = "384308510"
-USERNAME = "S9716467C"
-PASSWORD = "150597"
+API_KEY = # you tg api key here
+CHAT_ID = # your tg chat id here
+USERNAME = # your bbdc login username / id here
+PASSWORD = # your bbdc password here

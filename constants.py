@@ -1,14 +1,13 @@
 from enum import Enum
 
-
-LOGIN_POST_REQ_URL = "http://www.bbdc.sg/bbdc/bbdc_web/header2.asp"
 LOGIN_URL = "http://www.bbdc.sg/bbdc/bbdc_web/newheader.asp"
-LOGIN_URL2 = "https://info.bbdc.sg/members-login/"
 LOGIN_TITLE = "Bukit Batok Driving Centre"
-LOGIN_TITLE2 = "Members Login"
 SELECT_COURSE_TITLE = "BBDC: Select Course"
-# PATH_TO_CHROMEDRIVER = "/opt/WebDriver/bin/chromedriver" #use env
-# PATH_TO_CHROMEDRIVER = "/usr/local/bin//chromedriver"
+# LOGIN_POST_REQ_URL = "http://www.bbdc.sg/bbdc/bbdc_web/header2.asp"
+# LOGIN_URL2 = "https://info.bbdc.sg/members-login/"
+# LOGIN_TITLE2 = "Members Login"
+# CHROMEDRIVER_PATH = os.environ['CHROMEDRIVER_PATH']
+
 
 # unused
 # class PracticalSession(Enum):

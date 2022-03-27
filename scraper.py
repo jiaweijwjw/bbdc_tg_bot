@@ -39,54 +39,42 @@ msg = "BBDC: \n\n"
 current_booking = {}
 
 options = webdriver.ChromeOptions()
-options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+# options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 options.add_argument("--ignore-certificate-errors")
 options.add_argument("--allow-running-insecure-content")
 options.add_argument("--ignore-ssl-errors=yes")
+options.add_argument("--allow-insecure-localhost")
 options.add_argument("--incognito")
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("disable-dev-shm-usage")
 # options.add_argument("window-size=1920x1080")
 options.add_argument("--disable-gpu")
+
+# dynamically install chromedriver
 browser = webdriver.Chrome(
     executable_path=ChromeDriverManager().install(), options=options
 )
+
 # browser = webdriver.Chrome(
-#     executable_path=os.environ.get("PATH_TO_CHROMEDRIVER"), options=options
+#     executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options
 # )
 
 
 try:
-    # browser.get("https://www.instagram.com/accounts/login/")
-    # print(browser.current_url)
-    # print(browser.title)
-    # WebDriverWait(browser, 20).until(
-    #     EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='username']"))
-    # ).send_keys("mychillnook")
-    # print(browser.title)
-
     browser.get(LOGIN_URL)  # .get() by default already waits for page to load.
-    # wait_for_element(browser, "form[action='header2.asp']")
-    print(browser.current_url)
-    print(LOGIN_URL)
-    print(browser.title)
-    print(LOGIN_TITLE)
+    wait_for_element(browser, "form[action='header2.asp']")
     if browser.current_url == LOGIN_URL and browser.title == LOGIN_TITLE:
-        print(browser.title)
         try:
             login(browser)
-            browser.switch_to.alert.dismiss()
-            browser.switch_to.default_content()
         except Exception as e:
             print(e)
-
-        # login(browser)
         # wait_for_element(browser, "body.insecure-form")
         # WebDriverWait(browser, timeout=3).until(
         #     EC.presence_of_element_located((By.ID, "proceed-button"))
         # )
         # browser.find_element_by_id("proceed-button").click()
+
         wait_for_element(browser, SELECT_COURSE_FORM)
         print(browser.title)
         class2A_radio_btn = browser.find_element_by_css_selector(CLASS_2A_RADIO_BTN)
@@ -181,7 +169,6 @@ try:
                 f.write(msg)
                 bot.send_practical_training_slots(msg)
         print("end")
-        bot.send_practical_training_slots("hi")
 except Exception as e:
     print(e)
 finally:
